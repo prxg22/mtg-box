@@ -8,29 +8,25 @@
 ;(function() {
 
   angular
-    .module('boilerplate')
+    .module('mtg-box')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['LocalStorage', 'QueryService'];
+  MainController.$inject = ['$scope','LocalStorage', 'QueryService', 'searchMtgIO', 'MtgBox', 'Card'];
 
 
-  function MainController(LocalStorage, QueryService) {
+  function MainController($scope, LocalStorage, QueryService, searchMtgIO, MtgBox, Card) {
 
     // 'controller as' syntax
     var self = this;
+    $scope.query = searchMtgIO.query;
 
+    $scope.search = function(){
+      searchMtgIO.search().then(function (cards) {
+        $scope.cards = cards;
 
-    ////////////  function definitions
-
-
-    /**
-     * Load some data
-     * @return {Object} Returned object
-     */
-    // QueryService.query('GET', 'posts', {}, {})
-    //   .then(function(ovocie) {
-    //     self.ovocie = ovocie.data;
-    //   });
+        var card1 = new Card(cards[0]);
+      });
+    }
   }
 
 

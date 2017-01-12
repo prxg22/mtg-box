@@ -24,7 +24,7 @@
      *
      */
     angular
-      .module('boilerplate')
+      .module('mtg-box')
       .factory('LocalStorage', [
         '$window', '$rootScope', LocalStorageService
       ]);

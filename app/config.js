@@ -9,9 +9,10 @@
 	 * CONSTANTS.API_URL
 	 */
   angular
-  	.module('boilerplate')
+  	.module('mtg-box')
     .constant('CONSTANTS', {
-      'API_URL': 'http://www.yourAPIurl.com/'
+      'API_URL': '',
+      'MTG_API_URL': 'https://api.magicthegathering.io/v1/'
     });
 
 

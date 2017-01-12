@@ -12,7 +12,7 @@
    *
    */
   angular
-    .module('boilerplate')
+    .module('mtg-box')
     .directive('mainNav', tinMainNav);
 
   function tinMainNav() {

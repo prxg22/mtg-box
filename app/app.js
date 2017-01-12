@@ -1,6 +1,6 @@
 /**
  * 
- * AngularJS Boilerplate
+ * AngularJS mtg-box
  * @description           Description
  * @author                Jozef Butko // www.jozefbutko.com/resume
  * @url                   www.jozefbutko.com
@@ -16,7 +16,7 @@
    * Definition of the main app module and its dependencies
    */
   angular
-    .module('boilerplate', [
+    .module('mtg-box', [
       'ngRoute'
     ])
     .config(config);
@@ -68,7 +68,7 @@
    * 
    */
   angular
-    .module('boilerplate')
+    .module('mtg-box')
     .factory('authInterceptor', authInterceptor);
 
   authInterceptor.$inject = ['$rootScope', '$q', 'LocalStorage', '$location'];
@@ -100,7 +100,7 @@
    * Run block
    */
   angular
-    .module('boilerplate')
+    .module('mtg-box')
     .run(run);
 
   run.$inject = ['$rootScope', '$location'];

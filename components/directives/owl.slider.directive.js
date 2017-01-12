@@ -26,7 +26,7 @@
    * 
    */
   angular
-    .module('boilerplate')
+    .module('mtg-box')
     .directive('myslider', slider);
 
   function slider() {

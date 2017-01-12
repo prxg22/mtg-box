@@ -22,7 +22,7 @@
       });
    *
    * @param     {String} method HTTP method, eg. 'PUT', 'GET'...
-   * @param     {String} url API endpoint, eg. 'users/user' or 'system-properties'
+   * @param     {String} url to be sent
    * @param     {Object} params Map of strings or objects which will be turned
    *                     to `?key1=value1&key2=value2` after the url. If the value
    *                     is not a string, it will be
@@ -34,7 +34,7 @@
 
 
   angular
-    .module('boilerplate')
+    .module('mtg-box')
     .factory('QueryService', [
       '$http', '$q', 'CONSTANTS', QueryService
     ]);
@@ -64,7 +64,7 @@
 
       $http({
         method: method,
-        url: CONSTANTS.API_URL + url,
+        url: url,
         params: params,
         data: data
       }).then(function(data) {

@@ -1,8 +1,8 @@
 {
-  "name": "angularjs-boilerplate",
+  "name": "mtg-box",
   "version": "1.1.7",
   "license": "MIT",
-  "description": "Simple AngularJS Boilerplate to kick start your new project with SASS support and Gulp watch/build tasks",
+  "description": "An Magic the Gathering deck and cube creation app",
   "main": "app/app.js",
   "devDependencies": {
     "browser-sync": "^1.9.1",
@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jbutko/AngularJS-Boilerplate.git"
+    "url": "https://github.com/prxg22/mtg-box"
   },
   "keywords": [
     "angular",
@@ -52,10 +52,10 @@
     "single-page",
     "spa"
   ],
-  "author": "Jozef Butko",
-  "docs": "https://github.com/jbutko/AngularJS-Boilerplate/blob/master/README.md",
+  "author": "Paulo Ricardo Xavier Giusti",
+  "docs": "https://github.com/prxg22/mtg-box/master/README.md",
   "bugs": {
-    "url": "https://github.com/jbutko/AngularJS-Boilerplate/issues"
+    "url": "https://github.com/prxg22/mtg-box/issues"
   },
-  "homepage": "https://github.com/jbutko/AngularJS-Boilerplate"
+  "homepage": "https://github.com/prxg22/mtg-box"
 }
