@@ -1,0 +1,17 @@
+<div class="">
+    <div>
+        <md-input-container>
+            <label>Search</label>
+            <input type="text" ng-model="query.name" ng-change="query.name.length > 1 ? search() : null" />
+        </md-input-container>
+    </div>
+
+    <div layout="row" layout-padding layout-wrap>
+        <div flex="20" ng-repeat="card in cards">
+            <img ng-if="card.imageUrl" ng-src="{{card.imageUrl}}" alt="{{card.name}}">
+            <p>
+                {{card.name}} | {{card.types}} | {{card.colorIdentity}}
+            </p>
+        </div> 
+    </div>
+</div>

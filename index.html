@@ -5,12 +5,10 @@
 <!--[if gt IE 8]><!--> <html lang="en" ng-csp="" ng-app="mtg-box"> <!--<![endif]-->
 
 	<head>
-
-		<base href="/">
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>AngularJS mtg-box</title>
-		<meta name="description" content="Simple AngularJS mtg-box to kick start your new project with SASS support and Gulp watch/build tasks">
+		<title>mtg-box</title>
+		<meta name="description" content="Magic the gathering personal cards database and deck builder">
 
 		<!-- mobile meta -->
 		<meta name="HandheldFriendly" content="True">
@@ -18,32 +16,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
-		<!--[if IE]>
-			<link rel="shortcut icon" href="favicon.ico">
-		<![endif]-->
-		<!-- or, set /favicon.ico for IE10 win -->
-		<meta name="msapplication-TileColor" content="#f01d4f">
-
 		<!-- CSS -->
 		<!-- build:css css/style.min.css -->
-		<link rel="stylesheet" href="bower_components/OwlCarousel/owl-carousel/owl.carousel.css" />
+		<link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+
 		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 		<!-- endbuild -->
 
 	</head>
 
-	<body class="main-wrapper">
+	<body>
 	
 		<!--[if lt IE 8]>
 		    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 
 		<!-- Navigation -->
-		<main-nav></main-nav>
+		<md-toolbar layout-padding>
+			<h1>MTG Deck Builder</h1>
+		</md-toolbar>
 
 		<!-- Main view for templates -->
-		<div data-ng-view="" class="container"></div>
-
+		<md-content ui-view class="container" layout-padding></md-content>
+		</div>
 	</body>
 
 	<!-- Vendors -->
@@ -55,14 +52,18 @@
 	<!-- build:libs js/libs.js -->
 	<script type="text/javascript" src="js/nonangular/lodash.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript" src="bower_components/OwlCarousel/owl-carousel/owl.carousel.min.js"></script>
 	<!-- endbuild -->
 
 	<!-- Angular external libraries for application -->
 	<!-- build:angularlibs js/angularlibs.js -->
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
-	<script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
 	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script type="text/javascript" src="bower_components/angular-aria/angular-aria.js"></script>
+	<script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+	<script type="text/javascript" src="bower_components/angular-messages/angular-messages.js"></script>
+	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
+
 	<!-- endbuild -->
 
 	<!-- Angular components -->
@@ -75,7 +76,6 @@
 	<script type="text/javascript" src="components/services/mtgBox.service.js"></script>
 	<script type="text/javascript" src="components/directives/main.nav.directive.js"></script>
 	<script type="text/javascript" src="components/directives/responsive.nav.directive.js"></script>
-	<script type="text/javascript" src="components/directives/owl.slider.directive.js"></script>
 	<!-- endbuild -->
 
 	<!-- Application sections -->

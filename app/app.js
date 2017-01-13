@@ -17,13 +17,15 @@
    */
   angular
     .module('mtg-box', [
-      'ngRoute'
+      'ui.router',
+      'ngMaterial'
     ])
-    .config(config);
+    .config(config)
+    .run(['$state', function ($state) {}]);
 
   // safe dependency injection
   // this prevents minification issues
-  config.$inject = ['$routeProvider', '$locationProvider', '$httpProvider', '$compileProvider'];
+  config.$inject = ['$stateProvider', '$urlRouterProvider','$locationProvider', '$httpProvider', '$mdThemingProvider'];
 
   /**
    * App routing
@@ -32,33 +34,38 @@
    * into separate file
    * 
    */
-  function config($routeProvider, $locationProvider, $httpProvider, $compileProvider) {
-
+  function config($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
+    $mdThemingProvider.theme('default')
     $locationProvider.html5Mode(false);
-
-    // routes
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/home.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
-      .when('/contact', {
-        templateUrl: 'views/contact.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
-      .when('/setup', {
-        templateUrl: 'views/setup.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-
     $httpProvider.interceptors.push('authInterceptor');
 
+    $stateProvider.state('main', {
+      abstract: 'true',
+      url: '',
+      templateUrl: '../views/templates/main.tmp.html',
+    });
+
+    $stateProvider.state('main.box', {
+      url:'/',
+      views:{
+        'deck1': {
+          templateUrl: '../views/deck.tmp.html',
+          controller: 'MainController'
+        },
+        'deck2': {
+          templateUrl: '../views/deck.tmp.html',
+          controller: 'MainController'
+        },
+        'deck3': {
+          templateUrl: '../views/deck.tmp.html',
+          controller: 'MainController'
+        }
+      }
+    });
+
+
+
+    $urlRouterProvider.otherwise('/');
   }
 
 

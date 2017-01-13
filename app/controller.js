@@ -15,10 +15,9 @@
 
 
   function MainController($scope, LocalStorage, QueryService, searchMtgIO, MtgBox, Card) {
-
     // 'controller as' syntax
     var self = this;
-    $scope.query = searchMtgIO.query;
+    $scope.query = angular.copy(searchMtgIO.query);
 
     $scope.search = function(){
       searchMtgIO.search().then(function (cards) {
