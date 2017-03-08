@@ -1,18 +1,52 @@
 body{
-	background-color: $light-gray;
+	font-family: Roboto;
 }
 
-.container{
-	background-color: $white;
-	height: 100%;
+img{
+	max-width: 100%;
+}
 
-	/* .row {
-		&:first-child{
-			height: 65%;
+.container {
+	& > .md-whiteframe-4dp{
+		background-color: $white;
+	}
+}
+
+.add-box-wrapper{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	width: 75%;
+
+	.add-box{
+		.search-control{
+			input[type="text"]{
+				width: 95%;
+				margin: 0 auto;
+			}
+
+			button{
+				margin-top: 15px !important;
+			}
+
 		}
 
-		&:last-child{
-			height:  35%;
+		.select-filters{
+			md-select{
+				max-width: 70%;
+			}
 		}
-	} */
+	}
+
+	
+}
+
+
+.checkbox-select-container{
+	md-select{
+		margin-top: 0;
+		margin-bottom: 16px;
+		margin-left: 1px;
+		position: relative;
+		top: -2px;
+	}
 }

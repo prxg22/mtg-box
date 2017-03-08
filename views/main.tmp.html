@@ -1,0 +1,122 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Menu">
+            <i class="material-icons">&#xE5D2;</i>
+        </md-button>
+        <h1 class="md-title">
+            MTG Box
+        </h1>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="addbox = !addbox" aria-label="Add card to box">
+            <i class="material-icons">&#xE145;</i>
+        </md-button>
+    </div>
+</md-toolbar>
+<div ng-if="addbox" class="add-box-wrapper" md-whiteframe>
+    <div class="add-box" layout="column">
+        <div class="search-control" layout="row" layout="center center" layout-padding>
+            <md-input-container flex="70" flex-offset="15">
+                <label>Card name</label>
+                <input type="text" ng-model="query.name" ng-change="search()" /> 
+            </md-input-container>
+            <md-button class="md-icon-button" ng-click="searchFilters = !searchFilters">
+                <md-icon>&#xE152;</md-icon>
+            </md-button>
+            <md-button ng-if="cards.length > 0" class="md-icon-button">
+                <i class="material-icons">&#xE14C;</i>
+            </md-button>
+        </div>
+        
+        <div ng-if="searchFilters" class="search-filters" layout="column" layout-padding>
+            <md-divider></md-divider>
+            <div class="select-filters" layout="row" layout-xs="column" flex>
+                <div flex>
+                    <p class="md-caption">Type</p>
+                    <md-select ng-model="query.types" ng-change="search()" aria-label="Select types">
+                        <md-option ng-value="type" ng-repeat="type in types">{{type}}</md-option>
+                    </md-select>
+                </div>
+                <div flex>
+                    <p class="md-caption">Rarity</p>
+                    <md-select ng-model="query.rarity" ng-change="search()" aria-label="Select rarity">
+                        <md-option ng-value="rarity" ng-repeat="rarity in rarities">{{rarity}}</md-option>
+                    </md-select>
+                </div>
+                <div flex>
+                    <p class="md-caption" >Set</p>
+                    <md-select ng-model="query.set" ng-change="search()" aria-label="Select set">
+                        <md-option ng-value="set.code" ng-repeat="set in sets">{{set.name}}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div>
+                <p class="md-caption">Colors</p>
+                <div layout="row" flex="50" layout-xs="column">
+                    <md-checkbox 
+                        ng-repeat="color in colors track by $index"
+                        ng-model="colorCheckbox[$index]" 
+                        ng-change="toggleColor(color)" 
+                    >
+                    {{color}}
+                    </md-checkbox>
+                </div>
+            </div>
+            <div>
+                <p class="md-caption">Dual Colors</p>
+                <div layout="row" layout-sm="column" layout-xs="column">
+                    <div 
+                        ng-repeat="color in colors track by $index" 
+                        class="checkbox-select-container" flex layout="row"
+                    >
+                        <md-checkbox 
+                            ng-model="dualColorCheckbox[$index]"
+                            ng-change="toggleColor(color + ',' + dualColor[$index])"
+                            ng-disabled="dualColor[$index] === ''"
+                        >
+                            {{color}} + 
+                        </md-checkbox> 
+                        <md-select 
+                            ng-model="dualColor[$index]"
+                            ng-change=" dualColorCheckbox[$index] ? toggleColor(color + ',' + dualColor[$index]) : null"
+                        >
+                            <md-option 
+                                ng-value="dualColor" 
+                                ng-repeat="dualColor in colors"
+                                ng-if="dualColor !== color"
+                            >
+                                {{dualColor}}
+                            </md-option>
+                        </md-select>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+        </div>
+
+        <div class="search-result" class="md-primary" ng-if="cards.length > 0" layout="row">    {{cards.length}}
+            <div layout="column" layout-align="center center">
+                <md-button class="md-icon-button">
+                    <md-icon>&#xE314;</md-icon>
+                </md-button>
+            </div>
+            <div flex="95" layout="row" class="box" layout-align="center" layout-padding layout-wrap>
+                <div flex="20" ng-repeat="card in cards">
+                    <img ng-if="card.imageUrl" ng-src="{{card.imageUrl}}" alt="{{card.name}}">
+                    {{card.name}}
+                </div> 
+            </div>
+            <div layout="column" layout-align="center center">
+                <md-button class="md-icon-button">
+                    <md-icon>&#xE315;</md-icon>
+                </md-button>
+            </div>
+        </div>
+        <div class="add-action" ng-if="cards.length > 0" layout="row" layout-padding layout-align="end">
+            <div>
+                <md-button class="md-primary md-raised">Add to box</md-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ui-view></ui-view>

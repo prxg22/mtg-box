@@ -35,35 +35,28 @@
    * 
    */
   function config($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
+    // theming
     $mdThemingProvider.theme('default')
+    .primaryPalette('green')
+    .accentPalette('orange')
+    .backgroundPalette('grey', {
+      default: '100'
+    });
+
     $locationProvider.html5Mode(false);
     $httpProvider.interceptors.push('authInterceptor');
 
     $stateProvider.state('main', {
-      abstract: 'true',
+      abstract: true,
       url: '',
-      templateUrl: '../views/templates/main.tmp.html',
+      templateUrl: '../views/main.tmp.html',
+      controller: 'MainController'
     });
 
     $stateProvider.state('main.box', {
       url:'/',
-      views:{
-        'deck1': {
-          templateUrl: '../views/deck.tmp.html',
-          controller: 'MainController'
-        },
-        'deck2': {
-          templateUrl: '../views/deck.tmp.html',
-          controller: 'MainController'
-        },
-        'deck3': {
-          templateUrl: '../views/deck.tmp.html',
-          controller: 'MainController'
-        }
-      }
+      templateUrl: '../views/box.tmp.html'
     });
-
-
 
     $urlRouterProvider.otherwise('/');
   }
